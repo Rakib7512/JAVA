@@ -14,7 +14,7 @@ public class ConvertMinutes {
             int second=remaindingSecond%60;
         System.out.println( hours+" Hours "+minutes+" minutes "+second+" second.");
    
-        
+       
         
 
         
