@@ -12,7 +12,7 @@ public class CheckVowelAndConsonent {
         char letter=input.next().toUpperCase().charAt(0);
         
         
-        if(letter=='a'||letter=='e'||letter=='i'||letter=='o'||letter=='u'){
+        if(letter=='A'||letter=='E'||letter=='I'||letter=='U'||letter=='U'){
              System.out.println(letter+" is a Vowel");
         }
         
