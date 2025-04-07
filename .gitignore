@@ -26,6 +26,18 @@
 /PvaCalculation/build/
 /RadiausCalculate/nbproject/private/
 /RadiausCalculate/build/
+<<<<<<< HEAD
 /FindOutLargestNumber/target/
 /CheckVowelAndConsonent/target/
 /GradeCalculate/target/
+=======
+/PositiveNegativeOdd/nbproject/private/
+/PositiveNegativeOdd/build/
+/LeapYear/nbproject/private/
+/LeapYear/build/
+/Calculator/nbproject/private/
+/CalculatorByUsingSwith/nbproject/private/
+/CalculatorByUsingSwith/build/
+/Minigame/nbproject/private/
+/Minigame/build/
+>>>>>>> 37e5d476309083142c69cc947d75e4ebf39ba9d2
