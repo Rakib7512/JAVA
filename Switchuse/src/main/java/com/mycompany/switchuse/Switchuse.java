@@ -17,9 +17,7 @@ public class Switchuse {
         
         System.out.println("Enter Date");
         String date=input.next();
-        
-        
-     
+       
         
         switch (month) {
             case 1:
