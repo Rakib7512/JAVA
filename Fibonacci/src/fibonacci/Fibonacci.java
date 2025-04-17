@@ -16,14 +16,13 @@ public class Fibonacci {
        
        int sum=0;
        
-      int fibonacci=1;
        
         System.out.println("---------------");
         System.out.println(""+number1);
         System.out.println(""+number2);
        for(int i=3; i<=input; i++){
        
-       fibonacci*=i;
+  
        sum=number1+number2;
        
        number1=number2;
