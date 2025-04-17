@@ -15,8 +15,7 @@ public class Fibonacci {
        int number2=1;
        
        int sum=0;
-       
-       
+      
         System.out.println("---------------");
         System.out.println(""+number1);
         System.out.println(""+number2);
