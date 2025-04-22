@@ -98,9 +98,17 @@
 /PrimeNumberCheck/build/
 /MaxMinFind/nbproject/private/
 /MaxMinFind/build/
+<<<<<<< HEAD
+/TestPractise/target/
+=======
 /ClassTest/nbproject/private/
 /ClassTest/dist/
 /ClassTest/build/
 /Fibonacci2/nbproject/private/
+<<<<<<< HEAD
 /ClassAndObjectArray/nbproject/private/
 /ClassAndObjectArray/build/
+=======
+>>>>>>> b43f123d359604c9630e04531a2b974626bbb7e0
+/BaboolShot/target/
+>>>>>>> c09ec7a2e493fac05075201d818fc60401656982
