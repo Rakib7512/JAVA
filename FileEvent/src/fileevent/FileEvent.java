@@ -16,7 +16,6 @@ public class FileEvent {
         try {
             PrintWriter pw = new PrintWriter("C:\\Users\\Admin\\Documents\\Events Number.txt");
 
-
             for (int i = 0; i <= num; i++) {
 
                 if (i % 2 == 0) {
