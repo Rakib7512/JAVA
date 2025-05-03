@@ -130,4 +130,11 @@
 /ReadWeb/build/
 /ClassTestVehicale/nbproject/private/
 /ClassTestVehicale/build/
+<<<<<<< HEAD
 /Red/target/
+=======
+/Recursion/nbproject/private/
+/Recursion/build/
+/FileReadAndWrite/nbproject/private/
+/FileReadAndWrite/build/
+>>>>>>> 6886fd946dec6dc7a620ebbfc5f4e5dcddfbf586
