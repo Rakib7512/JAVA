@@ -22,7 +22,7 @@ public class FileReadAndWrite {
             pw.close();
             
             Scanner s = new Scanner(f);
-            System.out.println("Your text is:   " + s.nextLine());
+            System.out.println("Your text is: " + s.nextLine());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FileReadAndWrite.class.getName()).log(Level.SEVERE, null, ex);
         }
