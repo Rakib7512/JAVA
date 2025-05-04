@@ -20,6 +20,14 @@ public class SavingsAccount extends Account {
     public void setInterestrate(double interestrate) {
         this.interestrate = interestrate;
     }
+
+    @Override
+    public double getBalance() {
+       super.getBalance(); 
+      double inte=balance+(balance*interestrate);
+      return inte;
+     
+    }
     
     
 }
