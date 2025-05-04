@@ -22,12 +22,11 @@ public class SavingsAccount extends Account {
     }
 
     @Override
-    public double getBalance() {
-       super.getBalance(); 
-      double inte=balance+(balance*interestrate);
-      return inte;
-     
+    public void getSevinngs(double amount) {
+        super.getSevinngs(amount); 
     }
+
+   
     
     
 }

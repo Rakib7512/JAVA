@@ -1,20 +1,12 @@
 
-package bankstatement.CerrBal;
+package bankstatement.w;
 
 import bankstatement.account.Account;
 
-public class CarrentBalance extends Account{
-    private double withdrow;
 
-    public CarrentBalance() {
-    }
+public class Withdrow extends Account{
 
-    public double getWithdrow() {
-        return withdrow;
-    }
-
-    public void setWithdrow(double withdrow) {
-        this.withdrow = withdrow;
+    public Withdrow() {
     }
 
     public String getAccountName() {
@@ -32,13 +24,10 @@ public class CarrentBalance extends Account{
     public void setBalance(double balance) {
         this.balance = balance;
     }
-    
-    
 
     @Override
-    public void getAccBalance() {
-        super.getAccBalance(); 
-        
+    public void getWithrow(double amount) {
+        super.getWithrow(amount); 
     }
     
 }
