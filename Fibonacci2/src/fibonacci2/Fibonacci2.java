@@ -1,20 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
+
 package fibonacci2;
 
-/**
- *
- * @author Admin
- */
+import java.util.Scanner;
+
+
 public class Fibonacci2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner s=new Scanner(System.in);
+         System.out.println("Enter number");
+        int input=s.nextInt();
+        int number1=0;
+       int number2=1;
+        int sum=0;
+      
+        System.out.println("---------------");
+        System.out.println(""+number1);
+        System.out.println(""+number2);
+       for(int i=3; i<=input; i++){
+       
+  
+       sum=number1+number2;
+       
+       number1=number2;
+       number2=sum;
+               System.out.println(""+sum);
+       }
+       
+
     }
     
 }
