@@ -39,11 +39,11 @@ private int salary;
     public void setSalary(int salary) {
         this.salary = salary;
     }
+public void getAllDetails(){
+    System.out.println("Name: "+name+"\nId"+id+"\nSalary"+salary);
 
-
-    @Override
-    public String toString() {
-        return "Employee{" + "name=" + name + ", id=" + id + ", salary=" + salary + '}';
-    }
+}
+    
+    
 
 }

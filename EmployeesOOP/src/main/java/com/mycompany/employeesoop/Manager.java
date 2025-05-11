@@ -28,12 +28,12 @@ public class Manager extends Employee{
     }
 
     @Override
-    public String toString() {
-      
-       return teamSize+super.toString(); 
-              
-     
-   }
+    public void getAllDetails() {
+        super.getAllDetails(); 
+        System.out.println("Team Size: "+teamSize);
+    }
     
+
+
     
 }
