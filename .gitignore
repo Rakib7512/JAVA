@@ -165,4 +165,9 @@
 /LearnThread/target/
 /EmployeesOOP/target/
 /CircleMathod/target/
+<<<<<<< HEAD
 /fileReadPractice/target/
+=======
+/LearnDatabaseConnection/nbproject/private/
+/LearnDatabaseConnection/build/
+>>>>>>> 0e932bfbdbfc2fc35fcf325c773dffeda0fff2f6
