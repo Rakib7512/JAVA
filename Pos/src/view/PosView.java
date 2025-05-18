@@ -25,6 +25,8 @@ public class PosView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txtCustomerId = new javax.swing.JTextField();
@@ -37,6 +39,7 @@ public class PosView extends javax.swing.JFrame {
         btnCustomerReset = new javax.swing.JButton();
         btnCoustomerSave = new javax.swing.JButton();
         btnCustomerEdit = new javax.swing.JButton();
+        btnCustomerReset1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -61,16 +64,22 @@ public class PosView extends javax.swing.JFrame {
         jButton2.setText("Customer");
 
         jButton3.setBackground(new java.awt.Color(255, 204, 204));
-        jButton3.setText("Seals");
+        jButton3.setText("Supplier");
 
         jButton4.setBackground(new java.awt.Color(255, 204, 204));
-        jButton4.setText("Stock");
+        jButton4.setText("Cetagory");
 
         jButton5.setBackground(new java.awt.Color(255, 204, 204));
-        jButton5.setText("Seals");
+        jButton5.setText("PurchAse");
 
         jButton6.setBackground(new java.awt.Color(255, 204, 204));
-        jButton6.setText("Stock");
+        jButton6.setText("Sales");
+
+        jButton7.setBackground(new java.awt.Color(255, 204, 204));
+        jButton7.setText("Stock");
+
+        jButton8.setBackground(new java.awt.Color(255, 204, 204));
+        jButton8.setText("Report");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -82,11 +91,12 @@ public class PosView extends javax.swing.JFrame {
             .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,7 +108,11 @@ public class PosView extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 90, 530));
@@ -133,13 +147,16 @@ public class PosView extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 60, 40));
 
         btnCustomerReset.setText("Reset");
-        getContentPane().add(btnCustomerReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
+        getContentPane().add(btnCustomerReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, -1, -1));
 
         btnCoustomerSave.setText("Save");
         getContentPane().add(btnCoustomerSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         btnCustomerEdit.setText("Edit");
         getContentPane().add(btnCustomerEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        btnCustomerReset1.setText("Reset");
+        getContentPane().add(btnCustomerReset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -184,12 +201,15 @@ public class PosView extends javax.swing.JFrame {
     private javax.swing.JButton btnCoustomerSave;
     private javax.swing.JButton btnCustomerEdit;
     private javax.swing.JButton btnCustomerReset;
+    private javax.swing.JButton btnCustomerReset1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
