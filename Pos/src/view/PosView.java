@@ -136,6 +136,11 @@ public class PosView extends javax.swing.JFrame {
         getContentPane().add(btnCustomerReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, -1, -1));
 
         btnCoustomerSave.setText("Save");
+        btnCoustomerSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCoustomerSaveMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnCoustomerSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
 
         btnCustomerEdit.setText("Edit");
@@ -144,6 +149,10 @@ public class PosView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCoustomerSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCoustomerSaveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCoustomerSaveMouseClicked
 
     /**
      * @param args the command line arguments
