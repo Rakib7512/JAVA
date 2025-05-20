@@ -18,6 +18,15 @@ public class PosView extends javax.swing.JFrame {
     
     public PosView() {
         initComponents();
+        cd.showCustomerDetails(tableCustomer);
+    }
+    
+    public void reset(){
+        txtCustomerID.setText("");
+        txtCustomerName.setText("");
+        txtCustomerCell.setText("");
+        txtCustomerEmail.setText("");
+        txtCustomerAddress.setText("");
     }
 
   
@@ -37,30 +46,14 @@ public class PosView extends javax.swing.JFrame {
         btnPurchase = new javax.swing.JButton();
         btnSeals = new javax.swing.JButton();
         btnReport = new javax.swing.JButton();
-        tabCustomers = new javax.swing.JTabbedPane();
-        tabSeals = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        tabHome = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        tabSupplier = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        tab = new javax.swing.JTabbedPane();
         tabPurchase = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        tabCetagory = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        tabStock = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        tabReport = new javax.swing.JPanel();
         tabCustomer = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -70,6 +63,18 @@ public class PosView extends javax.swing.JFrame {
         txtCustomerCell = new javax.swing.JTextField();
         txtCustomerEmail = new javax.swing.JTextField();
         txtCustomerAddress = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableCustomer = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        tabHome = new javax.swing.JTabbedPane();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tabSupplier = new javax.swing.JTabbedPane();
+        tabCetagory = new javax.swing.JTabbedPane();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,9 +94,7 @@ public class PosView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1093, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 57, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1150, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,34 +172,72 @@ public class PosView extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 110, 540));
 
-        tabCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+        tab.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabCustomersMouseClicked(evt);
+                tabMouseClicked(evt);
             }
         });
 
-        jLabel2.setText("2");
+        tabCustomer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout tabSealsLayout = new javax.swing.GroupLayout(tabSeals);
-        tabSeals.setLayout(tabSealsLayout);
-        tabSealsLayout.setHorizontalGroup(
-            tabSealsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSealsLayout.createSequentialGroup()
-                .addGap(326, 326, 326)
-                .addComponent(jLabel2)
-                .addContainerGap(708, Short.MAX_VALUE))
-        );
-        tabSealsLayout.setVerticalGroup(
-            tabSealsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSealsLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(jLabel2)
-                .addContainerGap(424, Short.MAX_VALUE))
-        );
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Name");
+        tabCustomer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 40, 31));
 
-        tabCustomers.addTab("tab2", tabSeals);
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel6.setText("Email");
+        tabCustomer.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 50, 31));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jButton5.setText("Save");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        tabCustomer.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
+
+        jButton6.setText("Delete");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        tabCustomer.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 63, -1));
+
+        btnEdit.setText("Edit");
+        btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditMouseClicked(evt);
+            }
+        });
+        tabCustomer.add(btnEdit, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
+
+        jButton10.setText("Reset");
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton10MouseClicked(evt);
+            }
+        });
+        tabCustomer.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setText("Address");
+        tabCustomer.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 81, 31));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("ID");
+        tabCustomer.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 20, 31));
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel14.setText("Cell");
+        tabCustomer.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 40, 31));
+        tabCustomer.add(txtCustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 192, 38));
+        tabCustomer.add(txtCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 250, 31));
+        tabCustomer.add(txtCustomerCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 132, 38));
+        tabCustomer.add(txtCustomerEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 181, 31));
+        tabCustomer.add(txtCustomerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 60, 264, 31));
+
+        tableCustomer.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -207,198 +248,58 @@ public class PosView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tableCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCustomerMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tableCustomer);
 
-        tabCustomers.addTab("tab9", jScrollPane1);
+        tabCustomer.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 177, 960, 360));
 
-        jPanel5.setBackground(new java.awt.Color(204, 255, 204));
+        jButton1.setText("Search By Address");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        tabCustomer.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(204, 255, 204));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Customer");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1028, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-        );
-
-        jLabel5.setText("3");
-
-        javax.swing.GroupLayout tabHomeLayout = new javax.swing.GroupLayout(tabHome);
-        tabHome.setLayout(tabHomeLayout);
-        tabHomeLayout.setHorizontalGroup(
-            tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(tabHomeLayout.createSequentialGroup()
-                .addGap(318, 318, 318)
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        tabHomeLayout.setVerticalGroup(
-            tabHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabHomeLayout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(jLabel5)
-                .addGap(0, 375, Short.MAX_VALUE))
-        );
-
-        tabCustomers.addTab("tab3", tabHome);
-
-        jLabel9.setText("4");
-
-        javax.swing.GroupLayout tabSupplierLayout = new javax.swing.GroupLayout(tabSupplier);
-        tabSupplier.setLayout(tabSupplierLayout);
-        tabSupplierLayout.setHorizontalGroup(
-            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addGap(329, 329, 329)
-                .addComponent(jLabel9)
-                .addContainerGap(705, Short.MAX_VALUE))
-        );
-        tabSupplierLayout.setVerticalGroup(
-            tabSupplierLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabSupplierLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel9)
-                .addContainerGap(399, Short.MAX_VALUE))
-        );
-
-        tabCustomers.addTab("tab4", tabSupplier);
-
-        jLabel10.setText("5");
+        jButton2.setText("jButton2");
+        tabCustomer.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 100, 130, -1));
 
         javax.swing.GroupLayout tabPurchaseLayout = new javax.swing.GroupLayout(tabPurchase);
         tabPurchase.setLayout(tabPurchaseLayout);
         tabPurchaseLayout.setHorizontalGroup(
             tabPurchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabPurchaseLayout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addComponent(jLabel10)
-                .addContainerGap(734, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(tabCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         tabPurchaseLayout.setVerticalGroup(
             tabPurchaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabPurchaseLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jLabel10)
-                .addContainerGap(385, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(tabCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        tabCustomers.addTab("tab5", tabPurchase);
+        tab.addTab("tab5", tabPurchase);
 
-        jLabel11.setText("6");
+        tabHome.addTab("tab1", jLabel1);
 
-        javax.swing.GroupLayout tabCetagoryLayout = new javax.swing.GroupLayout(tabCetagory);
-        tabCetagory.setLayout(tabCetagoryLayout);
-        tabCetagoryLayout.setHorizontalGroup(
-            tabCetagoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCetagoryLayout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jLabel11)
-                .addContainerGap(759, Short.MAX_VALUE))
-        );
-        tabCetagoryLayout.setVerticalGroup(
-            tabCetagoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabCetagoryLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(jLabel11)
-                .addContainerGap(368, Short.MAX_VALUE))
-        );
+        jLabel2.setText("jLabel2");
+        tabHome.addTab("tab2", jLabel2);
 
-        tabCustomers.addTab("tab6", tabCetagory);
+        tab.addTab("tab2", tabHome);
+        tab.addTab("tab3", tabSupplier);
+        tab.addTab("tab4", tabCetagory);
+        tab.addTab("tab5", jTabbedPane5);
+        tab.addTab("tab6", jTabbedPane6);
+        tab.addTab("tab7", jTabbedPane1);
 
-        jLabel12.setText("7");
-
-        javax.swing.GroupLayout tabStockLayout = new javax.swing.GroupLayout(tabStock);
-        tabStock.setLayout(tabStockLayout);
-        tabStockLayout.setHorizontalGroup(
-            tabStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabStockLayout.createSequentialGroup()
-                .addGap(280, 280, 280)
-                .addComponent(jLabel12)
-                .addContainerGap(754, Short.MAX_VALUE))
-        );
-        tabStockLayout.setVerticalGroup(
-            tabStockLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabStockLayout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel12)
-                .addContainerGap(343, Short.MAX_VALUE))
-        );
-
-        tabCustomers.addTab("tab7", tabStock);
-
-        javax.swing.GroupLayout tabReportLayout = new javax.swing.GroupLayout(tabReport);
-        tabReport.setLayout(tabReportLayout);
-        tabReportLayout.setHorizontalGroup(
-            tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
-        );
-        tabReportLayout.setVerticalGroup(
-            tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 509, Short.MAX_VALUE)
-        );
-
-        tabCustomers.addTab("tab8", tabReport);
-
-        tabCustomer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Name");
-        tabCustomer.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(313, 21, 81, 31));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel6.setText("Email");
-        tabCustomer.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 109, 81, 31));
-
-        jButton5.setText("Save");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
-            }
-        });
-        tabCustomer.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 187, -1, -1));
-
-        jButton6.setText("Delete");
-        tabCustomer.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(463, 187, 63, -1));
-
-        jButton9.setText("Edit");
-        tabCustomer.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(204, 187, -1, -1));
-
-        jButton10.setText("Reset");
-        tabCustomer.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(695, 187, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setText("Address");
-        tabCustomer.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 109, 81, 31));
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("ID");
-        tabCustomer.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 32, 81, 31));
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel14.setText("Cell");
-        tabCustomer.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(662, 21, 81, 31));
-        tabCustomer.add(txtCustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 21, 192, 38));
-        tabCustomer.add(txtCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 22, 250, 31));
-        tabCustomer.add(txtCustomerCell, new org.netbeans.lib.awtextra.AbsoluteConstraints(749, 21, 132, 38));
-        tabCustomer.add(txtCustomerEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 110, 181, 31));
-        tabCustomer.add(txtCustomerAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(397, 110, 264, 31));
-
-        tabCustomers.addTab("tab1", tabCustomer);
-
-        getContentPane().add(tabCustomers, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 1040, 540));
+        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 1040, 540));
 
         pack();
         setLocationRelativeTo(null);
@@ -406,47 +307,47 @@ public class PosView extends javax.swing.JFrame {
 
     private void btnCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseClicked
         // TODO add your handling code here:
-        tabCustomers.setSelectedIndex(8);
+        tab.setSelectedIndex(0);
     }//GEN-LAST:event_btnCustomerMouseClicked
 
     private void btnHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHomeMouseClicked
         // TODO add your handling code here:
-        tabCustomers.setSelectedIndex(0);
+        tab.setSelectedIndex(1);
     }//GEN-LAST:event_btnHomeMouseClicked
 
     private void btnSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierMouseClicked
         // TODO add your handling code here:
-        tabCustomers.setSelectedIndex(1);
+        tab.setSelectedIndex(2);
     }//GEN-LAST:event_btnSupplierMouseClicked
 
     private void btnCetagoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCetagoryMouseClicked
         // TODO add your handling code here:
-        tabCustomers.setSelectedIndex(2);
+        tab.setSelectedIndex(3);
     }//GEN-LAST:event_btnCetagoryMouseClicked
 
     private void btnPurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPurchaseMouseClicked
         // TODO add your handling code here:
-         tabCustomers.setSelectedIndex(3);
+         tab.setSelectedIndex(4);
     }//GEN-LAST:event_btnPurchaseMouseClicked
 
     private void btnSealsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSealsMouseClicked
         // TODO add your handling code here:
-         tabCustomers.setSelectedIndex(4);
+         tab.setSelectedIndex(5);
     }//GEN-LAST:event_btnSealsMouseClicked
 
     private void btnStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStockMouseClicked
         // TODO add your handling code here:
-         tabCustomers.setSelectedIndex(5);
+         tab.setSelectedIndex(6);
     }//GEN-LAST:event_btnStockMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
         // TODO add your handling code here:
-         tabCustomers.setSelectedIndex(6);
+         tab.setSelectedIndex(7);
     }//GEN-LAST:event_btnReportMouseClicked
 
-    private void tabCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabCustomersMouseClicked
+    private void tabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tabCustomersMouseClicked
+    }//GEN-LAST:event_tabMouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
@@ -455,7 +356,61 @@ public class PosView extends javax.swing.JFrame {
         String email = txtCustomerEmail.getText().trim();
         String address = txtCustomerAddress.getText().trim();
         cd.saveCustomer(name, cell, email, address);
+        cd.showCustomerDetails(tableCustomer);
+        reset();
     }//GEN-LAST:event_jButton5MouseClicked
+
+    private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
+        // TODO add your handling code here:
+        int id = Integer.parseInt(txtCustomerID.getText().trim());
+        String name = txtCustomerName.getText().trim();
+        String cell = txtCustomerCell.getText().trim();
+        String email = txtCustomerEmail.getText().trim();
+        String address = txtCustomerAddress.getText().trim();
+        
+        cd.update(id, name, cell, email, address);
+        
+        cd.showCustomerDetails(tableCustomer);
+        
+        reset();
+        
+    }//GEN-LAST:event_btnEditMouseClicked
+
+    private void tableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCustomerMouseClicked
+        // TODO add your handling code here:
+        int rowIndex = tableCustomer.getSelectedRow();
+
+        String id = tableCustomer.getModel().getValueAt(rowIndex, 0).toString();
+        String name = tableCustomer.getModel().getValueAt(rowIndex, 1).toString();
+        String email = tableCustomer.getModel().getValueAt(rowIndex, 2).toString();
+        String phone = tableCustomer.getModel().getValueAt(rowIndex, 3).toString();
+        String address = tableCustomer.getModel().getValueAt(rowIndex, 4).toString();
+
+        txtCustomerID.setText(id);
+        txtCustomerName.setText(name);
+        txtCustomerEmail.setText(email);
+        txtCustomerCell.setText(phone);
+        txtCustomerAddress.setText(address);
+    }//GEN-LAST:event_tableCustomerMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        int id = Integer.parseInt(txtCustomerID.getText());
+        cd.delete(id);
+        cd.showCustomerDetails(tableCustomer);
+        reset();
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseClicked
+        // TODO add your handling code here:
+        reset();
+    }//GEN-LAST:event_jButton10MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        String address = txtCustomerAddress.getText().trim();
+        cd.showCustomerDetailsByAddress(tableCustomer, address);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -495,44 +450,40 @@ public class PosView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCetagory;
     private javax.swing.JButton btnCustomer;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPurchase;
     private javax.swing.JButton btnReport;
     private javax.swing.JButton btnSeals;
     private javax.swing.JButton btnStock;
     private javax.swing.JButton btnSupplier;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JPanel tabCetagory;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane tab;
+    private javax.swing.JTabbedPane tabCetagory;
     private javax.swing.JPanel tabCustomer;
-    private javax.swing.JTabbedPane tabCustomers;
-    private javax.swing.JPanel tabHome;
+    private javax.swing.JTabbedPane tabHome;
     private javax.swing.JPanel tabPurchase;
-    private javax.swing.JPanel tabReport;
-    private javax.swing.JPanel tabSeals;
-    private javax.swing.JPanel tabStock;
-    private javax.swing.JPanel tabSupplier;
+    private javax.swing.JTabbedPane tabSupplier;
+    private javax.swing.JTable tableCustomer;
     private javax.swing.JTextField txtCustomerAddress;
     private javax.swing.JTextField txtCustomerCell;
     private javax.swing.JTextField txtCustomerEmail;
