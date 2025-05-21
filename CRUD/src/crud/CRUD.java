@@ -18,12 +18,12 @@ public class CRUD {
     public static void main(String[] args) {
         
         System.out.println("------After Save----");
-        saveEmp("Rakib", "rakib@gmail.com", 50000);
+        saveEmp("Rakib", "rakib@gmail.com", 50000f);
         showAllEmp();
         
         
         System.out.println("-------After Edit-----");
-        updateEmp("Rakib Islam", "rakib@gmail.com", 70000, 1);
+        updateEmp("Rakib Islam", "rakib@gmail.com", 70000f, 1);
         showAllEmp();
         System.out.println("-------After Delete");
         deleteEmp(1);
@@ -64,7 +64,7 @@ public class CRUD {
             
             }
             rs.close();
-            ps.cancel();
+            ps.close();
             du.getCon().close();
         } catch (SQLException ex) {
             Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +80,7 @@ public class CRUD {
             
             
             ps.executeUpdate();
-            ps.cancel();
+            ps.close();
             du.getCon().close();
             
         } catch (SQLException ex) {
