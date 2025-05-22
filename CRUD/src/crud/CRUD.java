@@ -16,11 +16,11 @@ public class CRUD {
     public static void main(String[] args) {
 
         System.out.println("------After Save----");
-        saveEmp("Rakib", "rakib@gmail.com", 50000f);
+        saveEmp("Rakib", "rakib4@gmail.com", 50000f);
         showAllEmp();
 
         System.out.println("-------After Edit-----");
-        updateEmp("Rakib Islam", "rakib@gmail.com", 70000f, 1);
+        updateEmp("Rakib Islam", "parbej@gmail.com", 70000f, 1);
         showAllEmp();
         System.out.println("-------After Delete");
         deleteEmp(1);
