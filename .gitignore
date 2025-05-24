@@ -195,6 +195,7 @@
 /CarProject/dist/
 /CRUD/nbproject/private/
 /CRUD/build/
+<<<<<<< HEAD
 /CDPractice/nbproject/private/
 /CRUD/dist/
 /CDPractice/build/
@@ -202,3 +203,6 @@
 /PosAlter/nbproject/private/
 /PosAlter/build/
 /PosAlter/dist/
+=======
+>>>>>>> parent of 71cde92 (practice)
+/PosAgain/nbproject/private/
