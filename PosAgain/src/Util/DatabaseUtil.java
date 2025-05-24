@@ -1,14 +1,16 @@
 
 package Util;
 
-import com.sun.jdi.connect.spi.Connection;
+
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DatabaseUtil {
-     private Connection con=null;
+    
+    private Connection con = null;
     private String url="jdbc:mysql://localhost:3306/posAgain";
     private String usre="root";
     private String password="1234";
