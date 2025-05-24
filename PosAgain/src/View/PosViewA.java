@@ -12,23 +12,25 @@ import Util.DatabaseUtil;
  * @author RJ Power
  */
 public class PosViewA extends javax.swing.JFrame {
-    
-    DatabaseUtil du= new DatabaseUtil();
-    CustomerDao customerDao=new CustomerDao();
+
+    DatabaseUtil du = new DatabaseUtil();
+    CustomerDao customerDao = new CustomerDao();
 
     /**
      * Creates new form PosViewA
      */
     public PosViewA() {
         initComponents();
+        customerDao.showCustomerDetails(tableCustomer);
     }
-     public void reset(){
-        txtCustomerID.setText("");
-        txtCustomerName.setText("");
-        txtCustomerCell.setText("");
-        txtCustomerEmail.setText("");
-        txtCustomerAddress.setText("");
-    }
+
+//    public void reset() {
+//        txtCustomerID.setText("");
+//        txtCustomerName.setText("");
+//        txtCustomerCell.setText("");
+//        txtCustomerEmail.setText("");
+//        txtCustomerAddress.setText("");
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -357,14 +359,16 @@ public class PosViewA extends javax.swing.JFrame {
 
     private void btnCustomerSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerSaveMouseClicked
         // TODO add your handling code here:
-         int id = Integer.parseInt(txtCustomerID.getText().trim());
+
         String name = txtCustomerName.getText().trim();
         String cell = txtCustomerCell.getText().trim();
         String email = txtCustomerEmail.getText().trim();
         String address = txtCustomerAddress.getText().trim();
-        customerDao.saveCustomer(name, cell, email, address);
-        customerDao.showCustomerDetails(tableCustomer);
-                reset();
+        customerDao.saveCustomer(name, cell, email, address,tableCustomer);
+//        customerDao.showCustomerDetails(tableCustomer);
+
+
+      
     }//GEN-LAST:event_btnCustomerSaveMouseClicked
 
     /**

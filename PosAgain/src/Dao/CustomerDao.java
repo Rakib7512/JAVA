@@ -16,7 +16,7 @@ public class CustomerDao {
     DatabaseUtil du= new DatabaseUtil();
   PreparedStatement ps;
     
-     public void saveCustomer(String name, String cell, String email, String address) {
+     public void saveCustomer(String name, String cell, String email, String address,JTable jt) {
         String sql = "insert into customer(name,cell,email,address)values(?,?,?,?)";
         try {
             ps = du.getCon().prepareStatement(sql);
@@ -29,6 +29,7 @@ public class CustomerDao {
             du.getCon().close();
         
             JOptionPane.showMessageDialog(null, "Customer Inserted Successfully");
+            showCustomerDetails(jt);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Customer Insert Unsuccessful");
