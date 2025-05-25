@@ -79,12 +79,13 @@ public class CustomerDao {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                int id1 = rs.getInt("id");
                 String name = rs.getString("name");
                 String cell = rs.getString("cell");
                 String email = rs.getString("email");
                 String address = rs.getString("address");
 
-                Object[] row = {id, name, cell, email, address};
+                Object[] row = {id1, name, cell, email, address};
                 tableModel.addRow(row);
             }
             rs.close();
@@ -95,7 +96,7 @@ public class CustomerDao {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-       public void update(int id, String name, String cell, String email, String address) {
+       public void updateCustomer(int id, String name, String cell, String email, String address) {
 
         String sql = "update customer set name=?, cell=?, email=?, address=? where id=?";
         try {
@@ -115,16 +116,18 @@ public class CustomerDao {
         }
 
     }
-       public void delete(int id) {
+       public void deleteCustomer(int id,JTable jt) {
        String sql = "delete from customer where id=?";
         try {
-            ps = du.getCon().prepareStatement(sql);
+            ps = du.getCon().prepareStatement(sql); 
             ps.setInt(1, id);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted successfully.");
+            showCustomerDetails(jt);
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
        
     }
+       
 }
