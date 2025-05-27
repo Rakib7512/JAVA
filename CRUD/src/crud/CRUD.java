@@ -16,31 +16,31 @@ public class CRUD {
     public static void main(String[] args) {
 
         System.out.println("------After Save----");
-        saveEmp("Rakib", "Programar", 3000f);
+        saveEmp("Rakib", "rakib@gmail.com", 3000f);
         showAllEmp();
 
         System.out.println("-------After Edit-----");
-        updateEmp("Rakib Islam", "Senior Programar", 40000f, 1);
+        updateEmp("Rakib Islam", "rakib@gmail.com", 40000f, 1);
         showAllEmp();
-        System.out.println("-------After Delete-------");
+        System.out.println("-------After Delete");
         deleteEmp(1);
         showAllEmp();
 
     }
 
-    public static void saveEmp(String name, String designstion, float salary) {
+    public static void saveEmp(String name, String email, float salary) {
 
-        sql = "insert into emp(name,designstion,salary) values(?,?,?)";
+        sql = "insert into emp(name,email,salary) values(?,?,?)";
         try {
             ps = du.getCon().prepareStatement(sql);
             ps.setString(1, name);
-            ps.setString(2, designstion);
+            ps.setString(2, email);
             ps.setFloat(3, salary);
             ps.executeUpdate();
             ps.close();
             du.getCon().close();
-            System.out.println("     Data Save");
-            System.out.println("   ---------------");
+            System.out.println("Data Save");
+            System.out.println("-----------");
 
         } catch (SQLException ex) {
             Logger.getLogger(CRUD.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,9 +57,9 @@ public class CRUD {
 
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                String designstion = rs.getString("designstion");
+                String email = rs.getString("email");
                 float salary = rs.getFloat("salary");
-                System.out.println(" ID: " + id + "\n Name: " + name + "\n designstion: " + designstion + "\n Salary: " + salary+"\n ---------------------");
+                System.out.println(" ID: " + id + "\n Name: " + name + "\n Email: " + email + "\n Salary: " + salary+"\n ---------------------");
 
             }
             rs.close();
@@ -87,12 +87,12 @@ public class CRUD {
 
     }
 
-    public static void updateEmp(String name, String designstion, float salary, int id) {
-        sql = "update emp set name=?, designstion=?,salary=? where id=?";
+    public static void updateEmp(String name, String email, float salary, int id) {
+        sql = "update emp set name=?, email=?,salary=? where id=?";
         try {
             ps = du.getCon().prepareStatement(sql);
             ps.setString(1, name);
-            ps.setString(2, designstion);
+            ps.setString(2, email);
             ps.setFloat(3, salary);
             ps.setInt(4, id);
 
