@@ -16,6 +16,8 @@ public class CustomerDao {
     DatabaseUtil du= new DatabaseUtil();
   PreparedStatement ps;
     
+  
+  
      public void saveCustomer(String name, String cell, String email, String address,JTable jt) {
         String sql = "insert into customer(name,cell,email,address)values(?,?,?,?)";
         try {
@@ -95,7 +97,7 @@ public class CustomerDao {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-       public void update(int id, String name, String cell, String email, String address) {
+       public void updateCustomer(int id, String name, String cell, String email, String address) {
 
         String sql = "update customer set name=?, cell=?, email=?, address=? where id=?";
         try {
@@ -115,13 +117,14 @@ public class CustomerDao {
         }
 
     }
-       public void delete(int id) {
-       String sql = "delete from customer where id=?";
+       public void deleteCustomer(int id, JTable jt) {
+      String sql = "delete from customer where id=?";
         try {
             ps = du.getCon().prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Deleted successfully.");
+            showCustomerDetails(jt);
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
