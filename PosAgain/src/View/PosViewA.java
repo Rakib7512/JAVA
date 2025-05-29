@@ -809,7 +809,6 @@ public class PosViewA extends javax.swing.JFrame {
     private void btnCustomerDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerDeleteMouseClicked
         // TODO add your handling code here:
         int id = Integer.parseInt(txtCustomerID.getText());
-        customerDao.deleteCustomer(id, tableCustomer);
         resetCustomer();
     }//GEN-LAST:event_btnCustomerDeleteMouseClicked
 

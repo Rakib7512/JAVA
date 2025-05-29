@@ -2,6 +2,7 @@
 package Dao;
 
 import Util.DatabaseUtil;
+import entity.Category;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 
 
@@ -109,5 +111,24 @@ public class SupplierDao {
         }
        
     }
+     
+     public List<Category> getAllProducts(){
+         
+         List<Category> categoryList = new ArrayList<>();
+         
+         String sql = "select * from category";
+        try {
+            ps = du.getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+         while(rs.next()){
+             int id = rs.getInt("id");
+             String name = rs.getString("name");
+             categoryList.add(new Category(id, name));
+         }
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return categoryList;
+     }
     
 }

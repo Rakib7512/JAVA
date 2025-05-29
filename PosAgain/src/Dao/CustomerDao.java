@@ -1,4 +1,3 @@
-
 package Dao;
 
 import Util.DatabaseUtil;
@@ -9,18 +8,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-
 public class CustomerDao {
-    DatabaseUtil du= new DatabaseUtil();
-  PreparedStatement ps;
-    
-  
-  
-     public void saveCustomer(String name, String cell, String email, String address,JTable jt) {
+
+    DatabaseUtil du = new DatabaseUtil();
+    PreparedStatement ps;
+
+    public void saveCustomer(String name, String cell, String email, String address, JTable jt) {
         String sql = "insert into customer(name,cell,email,address)values(?,?,?,?)";
         try {
             ps = du.getCon().prepareStatement(sql);
@@ -31,7 +30,7 @@ public class CustomerDao {
             ps.executeUpdate();
             ps.close();
             du.getCon().close();
-        
+
             JOptionPane.showMessageDialog(null, "Customer Inserted Successfully");
             showCustomerDetails(jt);
 
@@ -41,8 +40,8 @@ public class CustomerDao {
         }
 
     }
-     
-     public void showCustomerDetails(JTable jt) {
+
+    public void showCustomerDetails(JTable jt) {
 
         String[] colomName = {"Id", "Name", "Cell", "Email", "Address"};
         DefaultTableModel tableModel = new DefaultTableModel(colomName, 0);
@@ -70,8 +69,8 @@ public class CustomerDao {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
-      public void showCustomerDetailsByID(JTable jt, int id) {
+
+    public void showCustomerDetailsByID(JTable jt, int id) {
 
         String[] colomName = {"Id", "Name", "Cell", "Email", "Address"};
         DefaultTableModel tableModel = new DefaultTableModel(colomName, 0);
@@ -99,7 +98,8 @@ public class CustomerDao {
             Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-       public void updateCustomer(int id, String name, String cell, String email, String address) {
+
+    public void updateCustomer(int id, String name, String cell, String email, String address) {
 
         String sql = "update customer set name=?, cell=?, email=?, address=? where id=?";
         try {
@@ -119,30 +119,8 @@ public class CustomerDao {
         }
 
     }
-       public void deleteCustomer(int id, JTable jt) {
-      String sql = "delete from customer where id=?";
-        try {
-            ps = du.getCon().prepareStatement(sql);
-            ps.setInt(1, id);
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Deleted successfully.");
-            showCustomerDetails(jt);
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }
-       
-       public List<Category>getAllCategory(){
-           
-           List<Category>categoryList= new Arr
-       
-     String sql="select *from category";
-        try {
-            ps=du.getCon().prepareStatement(sql);
-            ResultSet rs=ps.executeQuery();
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       }
+    
+    
+
+
 }

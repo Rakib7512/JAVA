@@ -12,7 +12,6 @@ public class PurchaseDao {
   String sql;
   public void loadCategory(){
       
-      sql="select for categorys"
   
   
   
