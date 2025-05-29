@@ -2,6 +2,8 @@
 package Dao;
 
 import Util.DatabaseUtil;
+import entity.Category;
+import java.awt.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -130,4 +132,17 @@ public class CustomerDao {
         }
        
     }
+       
+       public List<Category>getAllCategory(){
+           
+           List<Category>categoryList= new Arr
+       
+     String sql="select *from category";
+        try {
+            ps=du.getCon().prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       }
 }
