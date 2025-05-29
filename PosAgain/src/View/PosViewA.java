@@ -1,20 +1,25 @@
-
 package View;
 
 import Dao.CustomerDao;
+import Dao.SupplierDao;
 import Util.DatabaseUtil;
 
 public class PosViewA extends javax.swing.JFrame {
 
     DatabaseUtil du = new DatabaseUtil();
     CustomerDao customerDao = new CustomerDao();
+    SupplierDao supplierDao = new SupplierDao();
 
     /**
      * Creates new form PosViewA
      */
     public PosViewA() {
+        
+        //for data auto relod
+        
         initComponents();
         customerDao.showCustomerDetails(tableCustomer);
+        supplierDao.showSupplierDetails(tableSupplier);
     }
 
     public void resetCustomer() {
@@ -23,7 +28,17 @@ public class PosViewA extends javax.swing.JFrame {
         txtCustomerCell.setText("");
         txtCustomerEmail.setText("");
         txtCustomerAddress.setText("");
-           btnCustomerSave.setVisible(true  );
+        btnCustomerSave.setVisible(true);
+    }
+    
+    public void resetSupplier() {
+        txtSupplierID.setText("");
+        txtSupplierName.setText("");
+        txtCustomerCell.setText("");
+        txtSupplierEmail.setText("");
+        txtSupplierAddress.setText("");
+        txtSupplierContactPerson.setText("");
+        btnSupplierSave.setVisible(true);
     }
 
     /**
@@ -82,11 +97,11 @@ public class PosViewA extends javax.swing.JFrame {
         txtSupplierAddress = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtSuppliercell = new javax.swing.JTextField();
+        txtSupplierCell = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtSupplierEmail = new javax.swing.JTextField();
         txtSupplier = new javax.swing.JLabel();
-        txtSupplierContactNumber = new javax.swing.JTextField();
+        txtSupplierContactPerson = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableSupplier = new javax.swing.JTable();
         btnSupplierSave = new javax.swing.JButton();
@@ -272,6 +287,11 @@ public class PosViewA extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableCustomer);
 
         btnCustomerID.setText("Serch");
+        btnCustomerID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomerIDMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -423,15 +443,40 @@ public class PosViewA extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableSupplier.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableSupplierMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableSupplier);
 
         btnSupplierSave.setText("Save");
+        btnSupplierSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSupplierSaveMouseClicked(evt);
+            }
+        });
 
         btnSupplierDelete.setText("Delete");
+        btnSupplierDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSupplierDeleteMouseClicked(evt);
+            }
+        });
 
         btnSupplierReset.setText("Reset");
+        btnSupplierReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSupplierResetMouseClicked(evt);
+            }
+        });
 
         btnSupplierEdit.setText("Edit");
+        btnSupplierEdit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSupplierEditMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -450,7 +495,7 @@ public class PosViewA extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtSupplierID, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSuppliercell, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtSupplierCell, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -465,7 +510,7 @@ public class PosViewA extends javax.swing.JFrame {
                             .addComponent(txtSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSupplierContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSupplierContactPerson, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtSupplierAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -493,11 +538,11 @@ public class PosViewA extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSuppliercell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSupplierCell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSupplierEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSupplierContactNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSupplierContactPerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSupplierSave)
@@ -541,17 +586,15 @@ public class PosViewA extends javax.swing.JFrame {
 
     private void btnCustomerSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerSaveMouseClicked
         // TODO add your handling code here:
-       
 
         String name = txtCustomerName.getText().trim();
         String cell = txtCustomerCell.getText().trim();
         String email = txtCustomerEmail.getText().trim();
         String address = txtCustomerAddress.getText().trim();
-        customerDao.saveCustomer(name, cell, email, address,tableCustomer);
+        customerDao.saveCustomer(name, cell, email, address, tableCustomer);
 //        customerDao.showCustomerDetails(tableCustomer);
 
 
-      
     }//GEN-LAST:event_btnCustomerSaveMouseClicked
 
     private void btnSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuppliersActionPerformed
@@ -560,51 +603,125 @@ public class PosViewA extends javax.swing.JFrame {
 
     private void tableCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCustomerMouseClicked
         // TODO add your handling code here:
-         btnCustomerSave.setVisible(false  );
-        int rowIndex=tableCustomer.getSelectedRow();
-        String id=tableCustomer.getModel().getValueAt(rowIndex, 0).toString();
-        String name=tableCustomer.getModel().getValueAt(rowIndex, 1).toString();
-        String cell=tableCustomer.getModel().getValueAt(rowIndex, 2).toString();
-        String email=tableCustomer.getModel().getValueAt(rowIndex, 3).toString();
-        String address=tableCustomer.getModel().getValueAt(rowIndex, 4).toString();
-        
+        btnCustomerSave.setVisible(false);
+        int rowIndex = tableCustomer.getSelectedRow();
+        String id = tableCustomer.getModel().getValueAt(rowIndex, 0).toString();
+        String name = tableCustomer.getModel().getValueAt(rowIndex, 1).toString();
+        String cell = tableCustomer.getModel().getValueAt(rowIndex, 2).toString();
+        String email = tableCustomer.getModel().getValueAt(rowIndex, 3).toString();
+        String address = tableCustomer.getModel().getValueAt(rowIndex, 4).toString();
+
         txtCustomerID.setText(id);
         txtCustomerName.setText(name);
         txtCustomerCell.setText(cell);
         txtCustomerEmail.setText(email);
         txtCustomerAddress.setText(address);
-        
-        
+
+
     }//GEN-LAST:event_tableCustomerMouseClicked
 
     private void btnCustomerResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerResetMouseClicked
         // TODO add your handling code here:
-      
+
         resetCustomer();
-     
+
     }//GEN-LAST:event_btnCustomerResetMouseClicked
 
     private void btnCustomerEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerEditMouseClicked
         // TODO add your handling code here:
-         String name = txtCustomerName.getText().trim();
+        String name = txtCustomerName.getText().trim();
         String cell = txtCustomerCell.getText().trim();
         String email = txtCustomerEmail.getText().trim();
         String address = txtCustomerAddress.getText().trim();
-        int id =Integer.parseInt( txtCustomerID.getText().trim());
-        
-      customerDao.updateCustomer(id, name, cell, email, address);
-      resetCustomer();
-      
-       
-     
+        int id = Integer.parseInt(txtCustomerID.getText().trim());
+
+        customerDao.updateCustomer(id, name, cell, email, address);
+        resetCustomer();
+
+
     }//GEN-LAST:event_btnCustomerEditMouseClicked
 
     private void btnCustomerDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerDeleteMouseClicked
         // TODO add your handling code here:
-        int id= Integer.parseInt(txtCustomerID.getText());
+        int id = Integer.parseInt(txtCustomerID.getText());
         customerDao.deleteCustomer(id, tableCustomer);
         resetCustomer();
     }//GEN-LAST:event_btnCustomerDeleteMouseClicked
+
+    private void btnSupplierSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierSaveMouseClicked
+        // TODO add your handling code here:
+        String name = txtSupplierName.getText().trim();
+        String cell = txtSupplierCell.getText().trim();
+        String email = txtSupplierEmail.getText().trim();
+        String address = txtSupplierAddress.getText().trim();
+        String contactPerson = txtSupplierContactPerson.getText().trim();
+
+        supplierDao.saveSupplier(name, cell, email, address, contactPerson, tableSupplier);
+
+      resetSupplier();
+
+    }//GEN-LAST:event_btnSupplierSaveMouseClicked
+
+    private void tableSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSupplierMouseClicked
+        // TODO add your handling code here:
+       
+               btnSupplierSave.setVisible(false);    
+        int rowIndex = tableSupplier.getSelectedRow();
+        String id = tableSupplier.getModel().getValueAt(rowIndex, 0).toString();
+        String name = tableSupplier.getModel().getValueAt(rowIndex, 1).toString();
+        String cell = tableSupplier.getModel().getValueAt(rowIndex, 2).toString();
+        String email = tableSupplier.getModel().getValueAt(rowIndex, 3).toString();
+        String address = tableSupplier.getModel().getValueAt(rowIndex, 4).toString();
+        String contactPerson = tableSupplier.getModel().getValueAt(rowIndex, 5).toString();
+
+        txtSupplierID.setText(id);
+        txtSupplierName.setText(name);
+        txtCustomerCell.setText(cell);
+        txtCustomerEmail.setText(email);
+        txtSupplierAddress.setText(address);
+        txtSupplierContactPerson.setText(contactPerson);
+        
+        
+ 
+
+
+    }//GEN-LAST:event_tableSupplierMouseClicked
+
+    private void btnSupplierEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierEditMouseClicked
+        // TODO add your handling code here:
+       String name = txtSupplierName.getText().trim();
+        String cell = txtSupplierCell.getText().trim();
+        String email = txtSupplierEmail.getText().trim();
+        String address = txtSupplierAddress.getText().trim();
+        String contactPerson = txtSupplierContactPerson.getText().trim();
+        int id = Integer.parseInt(txtSupplierID.getText().trim());
+
+        supplierDao.EditSupplier(id, name, cell, email, address, contactPerson,tableSupplier);
+
+      resetSupplier();
+      
+      supplierDao.showSupplierDetails(tableSupplier);
+        
+        
+    }//GEN-LAST:event_btnSupplierEditMouseClicked
+
+    private void btnSupplierResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierResetMouseClicked
+        // TODO add your handling code here:
+        resetSupplier();
+    }//GEN-LAST:event_btnSupplierResetMouseClicked
+
+    private void btnSupplierDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierDeleteMouseClicked
+        // TODO add your handling code here:
+        int id=Integer.parseInt(txtSupplierID.getText().trim().toString());
+        supplierDao.deleteSupplier(WIDTH, tableCustomer);
+        resetSupplier();
+    }//GEN-LAST:event_btnSupplierDeleteMouseClicked
+
+    private void btnCustomerIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerIDMouseClicked
+        // TODO add your handling code here:
+        int id = Integer.parseInt(txtCustomerID.getText());
+        customerDao.showCustomerDetailsByID(tableCustomer, id);
+    }//GEN-LAST:event_btnCustomerIDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -700,10 +817,10 @@ public class PosViewA extends javax.swing.JFrame {
     private javax.swing.JTextField txtCustomerName;
     private javax.swing.JLabel txtSupplier;
     private javax.swing.JTextField txtSupplierAddress;
-    private javax.swing.JTextField txtSupplierContactNumber;
+    private javax.swing.JTextField txtSupplierCell;
+    private javax.swing.JTextField txtSupplierContactPerson;
     private javax.swing.JTextField txtSupplierEmail;
     private javax.swing.JTextField txtSupplierID;
     private javax.swing.JTextField txtSupplierName;
-    private javax.swing.JTextField txtSuppliercell;
     // End of variables declaration//GEN-END:variables
 }
