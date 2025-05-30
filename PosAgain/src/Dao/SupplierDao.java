@@ -112,23 +112,23 @@ public class SupplierDao {
        
     }
      
-     public List<Category> getAllProducts(){
-         
-         List<Category> categoryList = new ArrayList<>();
-         
-         String sql = "select * from category";
-        try {
-            ps = du.getCon().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-         while(rs.next()){
-             int id = rs.getInt("id");
-             String name = rs.getString("name");
-             categoryList.add(new Category(id, name));
-         }
-        } catch (SQLException ex) {
-            Logger.getLogger(SupplierDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         return categoryList;
-     }
+//     public List<Category> getAllProducts(){
+//         
+//
+//         
+//         String sql = "select * from category";
+//        try {
+//            ps = du.getCon().prepareStatement(sql);
+//            ResultSet rs = ps.executeQuery();
+//         while(rs.next()){
+//             int id = rs.getInt("id");
+//             String name = rs.getString("name");
+//             categoryList.add(new Category(id, name));
+//         }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(SupplierDao.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//         return categoryList;
+//     }
     
 }
