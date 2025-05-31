@@ -117,10 +117,18 @@ public class CustomerDao {
         }
 
     }
-    
+    public void deleteCateory(int id, JTable jt) {
+      String sql = "delete from customer where id=?";
+        try {
+            ps = du.getCon().prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Customer Deleted successfully.");
+            showCustomerDetails(jt);
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }
   
-    
-    
-
-
 }

@@ -1,0 +1,41 @@
+
+package Dao;
+
+import Util.DatabaseUtil;
+import entity.Stock;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class StockDao {
+    DatabaseUtil du=new DatabaseUtil();
+    PreparedStatement ps;
+    String sql;
+    ResultSet rs;
+    
+    public List<Stock> getProductByCategory(String categoryName){
+    List<Stock> stockList =new java.util.ArrayList<>();
+    sql="select *from stock where category=?";
+        try {
+            ps=du.getCon().prepareStatement(sql);
+            ps.setString(1, categoryName);
+            rs=ps.executeQuery();
+                        while(rs.next()){
+            Stock stock=new Stock(
+                    rs.getInt("id"),
+                    rs.getString("productName"),
+                    rs.getFloat("quantity"),
+                    rs.getString("category")
+            );
+            stockList.add(stock);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StockDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return stockList;
+    }
+}
