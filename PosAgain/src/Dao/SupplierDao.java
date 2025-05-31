@@ -130,5 +130,9 @@ public class SupplierDao {
 //        }
 //         return categoryList;
 //     }
+
+    public List<Category> getAllProducts() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
