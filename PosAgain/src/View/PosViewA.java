@@ -13,29 +13,27 @@ public class PosViewA extends javax.swing.JFrame {
     DatabaseUtil du = new DatabaseUtil();
     CustomerDao customerDao = new CustomerDao();
     SupplierDao supplierDao = new SupplierDao();
-    PurchaseDao purchaseDao=new PurchaseDao();
-    CategoryDao categoryDao=new CategoryDao();
+    PurchaseDao purchaseDao = new PurchaseDao();
+    CategoryDao categoryDao = new CategoryDao();
 
     /**
      * Creates new form PosViewA
      */
     public PosViewA() {
-        
+
         //for data auto relod
-        
         initComponents();
         customerDao.showCustomerDetails(tableCustomer);
         supplierDao.showSupplierDetails(tableSupplier);
         purchaseDao.loadCategory(comboPurchaseCategory);//Category load korar jonno
         categoryDao.showAllCategorys(tableCategory);
-         
-        
+
         comboPurchaseCategory.addItemListener(new ItemListener() {
-           @Override
+            @Override
             public void itemStateChanged(ItemEvent e) {
-             String categoryName=comboPurchaseCategory.getSelectedItem().toString(); 
-             purchaseDao.loadProduct(comboPurchaseCategory, categoryName);
-                    
+                String categoryName = comboPurchaseCategory.getSelectedItem().toString();
+                purchaseDao.loadProduct(comboPurchaseCategory, categoryName);
+
             }
         });
 //        comboPurchaseProductName.addItemListener(new ItemListener() {
@@ -46,7 +44,6 @@ public class PosViewA extends javax.swing.JFrame {
 //        });
     }
 
-
     public void resetCustomer() {
         txtCustomerID.setText("");
         txtCustomerName.setText("");
@@ -55,7 +52,7 @@ public class PosViewA extends javax.swing.JFrame {
         txtCustomerAddress.setText("");
         btnCustomerSave.setVisible(true);
     }
-     
+
     public void resetSupplier() {
         txtSupplierID.setText("");
         txtSupplierName.setText("");
@@ -65,11 +62,12 @@ public class PosViewA extends javax.swing.JFrame {
         txtSupplierContactPerson.setText("");
         btnSupplierSave.setVisible(true);
     }
-     public void resetCategory() {
+
+    public void resetCategory() {
         txtCategoryID.setText("");
         txtCategoryName.setText("");
         btnCategorySave.setVisible(true);
-     }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1006,14 +1004,14 @@ public class PosViewA extends javax.swing.JFrame {
 
         supplierDao.saveSupplier(name, cell, email, address, contactPerson, tableSupplier);
 
-      resetSupplier();
+        resetSupplier();
 
     }//GEN-LAST:event_btnSupplierSaveMouseClicked
 
     private void tableSupplierMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSupplierMouseClicked
         // TODO add your handling code here:
-       
-               btnSupplierSave.setVisible(false);    
+
+        btnSupplierSave.setVisible(false);
         int rowIndex = tableSupplier.getSelectedRow();
         String id = tableSupplier.getModel().getValueAt(rowIndex, 0).toString();
         String name = tableSupplier.getModel().getValueAt(rowIndex, 1).toString();
@@ -1028,29 +1026,26 @@ public class PosViewA extends javax.swing.JFrame {
         txtCustomerEmail.setText(email);
         txtSupplierAddress.setText(address);
         txtSupplierContactPerson.setText(contactPerson);
-        
-        
- 
 
 
     }//GEN-LAST:event_tableSupplierMouseClicked
 
     private void btnSupplierEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierEditMouseClicked
         // TODO add your handling code here:
-       String name = txtSupplierName.getText().trim();
+        String name = txtSupplierName.getText().trim();
         String cell = txtSupplierCell.getText().trim();
         String email = txtSupplierEmail.getText().trim();
         String address = txtSupplierAddress.getText().trim();
         String contactPerson = txtSupplierContactPerson.getText().trim();
         int id = Integer.parseInt(txtSupplierID.getText().trim());
 
-        supplierDao.EditSupplier(id, name, cell, email, address, contactPerson,tableSupplier);
+        supplierDao.EditSupplier(id, name, cell, email, address, contactPerson, tableSupplier);
 
-      resetSupplier();
-      
-      supplierDao.showSupplierDetails(tableSupplier);
-        
-        
+        resetSupplier();
+
+        supplierDao.showSupplierDetails(tableSupplier);
+
+
     }//GEN-LAST:event_btnSupplierEditMouseClicked
 
     private void btnSupplierResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierResetMouseClicked
@@ -1060,7 +1055,7 @@ public class PosViewA extends javax.swing.JFrame {
 
     private void btnSupplierDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSupplierDeleteMouseClicked
         // TODO add your handling code here:
-        int id=Integer.parseInt(txtSupplierID.getText().trim().toString());
+        int id = Integer.parseInt(txtSupplierID.getText().trim().toString());
         supplierDao.deleteSupplier(WIDTH, tableCustomer);
         resetSupplier();
     }//GEN-LAST:event_btnSupplierDeleteMouseClicked
@@ -1072,11 +1067,11 @@ public class PosViewA extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCustomerIDMouseClicked
 
     private void btnPurchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPurchaseMouseClicked
-tabMain.setSelectedIndex(4);  
+        tabMain.setSelectedIndex(4);
 //    purchaseDao.loadCategory(comboPurchaseCategory);
 // TODO add your handling code here:
-       
-        
+
+
     }//GEN-LAST:event_btnPurchaseMouseClicked
 
     private void comboPurchaseCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPurchaseCategoryActionPerformed
@@ -1086,37 +1081,36 @@ tabMain.setSelectedIndex(4);
     private void btnPurchaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPurchaseActionPerformed
         // TODO add your handling code here:
         tabMain.setSelectedIndex(5);
-            
+
     }//GEN-LAST:event_btnPurchaseActionPerformed
 
     private void btnCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoryActionPerformed
         // TODO add your handling code here:
         tabMain.setSelectedIndex(3);
-       
+
     }//GEN-LAST:event_btnCategoryActionPerformed
 
     private void btnCategorySaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCategorySaveMouseClicked
         // TODO add your handling code here:
-         String name =txtCategoryName.getText().trim();
-        
-   categoryDao.saveCategory(name, tableCategory);
-   resetCategory();
-        
-        
-        
+        String name = txtCategoryName.getText().trim();
+
+        categoryDao.saveCategory(name, tableCategory);
+        resetCategory();
+
+
     }//GEN-LAST:event_btnCategorySaveMouseClicked
 
     private void btnCategoryEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCategoryEditMouseClicked
         // TODO add your handling code here:
-        int id=Integer.parseInt(txtCategoryID.getText().trim());
-        String name=txtCategoryName.getText().trim();
+        int id = Integer.parseInt(txtCategoryID.getText().trim());
+        String name = txtCategoryName.getText().trim();
         categoryDao.updateCustomer(id, name);
         resetCategory();
     }//GEN-LAST:event_btnCategoryEditMouseClicked
 
     private void btnCategoryDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCategoryDeleteMouseClicked
         // TODO add your handling code here:
-        int id=Integer.parseInt(txtCategoryID.getText().trim());
+        int id = Integer.parseInt(txtCategoryID.getText().trim());
         categoryDao.deleteCateory(WIDTH, tableCategory);
         resetCategory();
     }//GEN-LAST:event_btnCategoryDeleteMouseClicked
@@ -1129,16 +1123,16 @@ tabMain.setSelectedIndex(4);
     private void tableCategoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCategoryMouseClicked
         // TODO add your handling code here:
         btnCustomerSave.setVisible(false);
-        
+
         int rowIndex = tableCategory.getSelectedRow();
 
         String id = tableCategory.getModel().getValueAt(rowIndex, 0).toString();
         String name = tableCategory.getModel().getValueAt(rowIndex, 1).toString();
-        
-         txtCategoryID.setText(id);
+
+        txtCategoryID.setText(id);
         txtCategoryName.setText(name);
-        
-        
+
+
     }//GEN-LAST:event_tableCategoryMouseClicked
 
     /**
