@@ -27,12 +27,16 @@ public class PosViewA extends javax.swing.JFrame {
         supplierDao.showSupplierDetails(tableSupplier);
         purchaseDao.loadCategory(comboPurchaseCategory);//Category load korar jonno
         categoryDao.showAllCategorys(tableCategory);
-
+        supplierDao.loadSupplier(comboPurchaseCategory);
+        
+     
+        
+   
         comboPurchaseCategory.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
                 String categoryName = comboPurchaseCategory.getSelectedItem().toString();
-                purchaseDao.loadProduct(comboPurchaseCategory, categoryName);
+                purchaseDao.loadProduct(comboPurchaseProductName, categoryName);
 
             }
         });
@@ -163,7 +167,7 @@ public class PosViewA extends javax.swing.JFrame {
         comboPurchaseSupplierName = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtUnitePrice = new javax.swing.JTextField();
+        txtPurchaseUnitePrice = new javax.swing.JTextField();
         txtPurchaseQuantity = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtPurchaseTotalPrice = new javax.swing.JTextField();
@@ -817,15 +821,24 @@ public class PosViewA extends javax.swing.JFrame {
 
         jLabel18.setText("Unite Price");
 
-        jLabel19.setText("Quantity");
+        txtPurchaseQuantity.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPurchaseQuantityFocusLost(evt);
+            }
+        });
 
-        txtPurchaseTotalPrice.setText("jTextField1");
+        jLabel19.setText("Quantity");
 
         jLabel20.setText("Total Price");
 
         btnPurchaseReset.setText("Reset");
 
         btnPurchaseConfirm.setText("Confirm");
+        btnPurchaseConfirm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPurchaseConfirmMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -839,12 +852,10 @@ public class PosViewA extends javax.swing.JFrame {
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(comboPurchaseCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnPurchaseReset)
-                        .addGroup(jPanel10Layout.createSequentialGroup()
-                            .addComponent(jLabel18)
-                            .addGap(47, 47, 47)
-                            .addComponent(txtUnitePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addGap(47, 47, 47)
+                        .addComponent(txtPurchaseUnitePrice, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
@@ -861,15 +872,16 @@ public class PosViewA extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(txtPurchaseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(135, 135, 135)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
-                        .addComponent(txtPurchaseTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(txtPurchaseTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addGap(16, 16, 16)
-                    .addComponent(btnPurchaseConfirm)
-                    .addContainerGap(980, Short.MAX_VALUE)))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btnPurchaseConfirm)
+                .addGap(83, 83, 83)
+                .addComponent(btnPurchaseReset, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -886,19 +898,16 @@ public class PosViewA extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(txtUnitePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19)
+                    .addComponent(txtPurchaseUnitePrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPurchaseQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPurchaseTotalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnPurchaseReset)
-                .addGap(0, 301, Short.MAX_VALUE))
-            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel10Layout.createSequentialGroup()
-                    .addGap(193, 193, 193)
-                    .addComponent(btnPurchaseConfirm)
-                    .addContainerGap(302, Short.MAX_VALUE)))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPurchaseReset)
+                    .addComponent(btnPurchaseConfirm))
+                .addGap(0, 299, Short.MAX_VALUE))
         );
 
         tabPurchase.addTab("tab1", jPanel10);
@@ -1135,6 +1144,26 @@ public class PosViewA extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tableCategoryMouseClicked
 
+    private void txtPurchaseQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPurchaseQuantityFocusLost
+        // TODO add your handling code here:
+        float unitePrice=Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
+        float quantity=Float.parseFloat(txtPurchaseQuantity.getText().trim());
+          float totalPrice=unitePrice*quantity;
+        txtPurchaseTotalPrice.setText(String.valueOf(totalPrice));
+    }//GEN-LAST:event_txtPurchaseQuantityFocusLost
+
+    private void btnPurchaseConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPurchaseConfirmMouseClicked
+        // TODO add your handling code here:
+        String category=comboPurchaseCategory.getSelectedItem().toString();
+        String productName=comboPurchaseProductName.getSelectedItem().toString();
+        String supplierName=comboPurchaseSupplierName.getSelectedItem().toString();
+         float unitePrice=Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
+        float quantity=Float.parseFloat(txtPurchaseQuantity.getText().trim());
+        float totalPrice=Float.parseFloat(txtPurchaseTotalPrice.getText().trim());
+        purchaseDao.savePurchase(productName, unitePrice, quantity, totalPrice, category, supplierName);
+        
+    }//GEN-LAST:event_btnPurchaseConfirmMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1258,6 +1287,7 @@ public class PosViewA extends javax.swing.JFrame {
     private javax.swing.JTextField txtCustomerName;
     private javax.swing.JTextField txtPurchaseQuantity;
     private javax.swing.JTextField txtPurchaseTotalPrice;
+    private javax.swing.JTextField txtPurchaseUnitePrice;
     private javax.swing.JLabel txtSupplier;
     private javax.swing.JTextField txtSupplierAddress;
     private javax.swing.JTextField txtSupplierCell;
@@ -1265,6 +1295,5 @@ public class PosViewA extends javax.swing.JFrame {
     private javax.swing.JTextField txtSupplierEmail;
     private javax.swing.JTextField txtSupplierID;
     private javax.swing.JTextField txtSupplierName;
-    private javax.swing.JTextField txtUnitePrice;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,6 +2,7 @@
 package Dao;
 
 import Util.DatabaseUtil;
+import Util.Supplier;
 import entity.Category;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
+import javax.swing.JComboBox;
 
 
 
@@ -19,6 +21,7 @@ public class SupplierDao {
  
     DatabaseUtil du= new DatabaseUtil();
   PreparedStatement ps;
+  String sql;
   CustomerDao customerDao=new CustomerDao();
     
      public void saveSupplier(String name, String cell, String email, String address,String contactPerson, JTable jt) {
@@ -134,5 +137,40 @@ public class SupplierDao {
     public List<Category> getAllProducts() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    public void loadSupplier(JComboBox<String> supplierComboList) {
+      List<Supplier>supplierList=new java.util.ArrayList<>();
+      
+     supplierComboList.removeAllItems();
+     
+        String sql = "select * from suppliers";
+        try {
+            ps = du.getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String cell = rs.getString("cell");
+                String email = rs.getString("email");
+                String address = rs.getString("address");
+                String contactPerson = rs.getString("contactPerson");
+
+               Supplier supplier=new Supplier(id, name, address, cell, email, contactPerson);
+               supplierList.add(supplier);
+            }
+            rs.close();
+            ps.close();
+            du.getCon().close();
+        
+
+        } catch (SQLException ex) {
+            Logger.getLogger(SupplierDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(Supplier su:supplierList){
+            supplierComboList.addItem(su.getName());
+        
+        
+        }
+    }
+    
     
 }
