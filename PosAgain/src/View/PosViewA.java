@@ -34,6 +34,7 @@ public class PosViewA extends javax.swing.JFrame {
            @Override
             public void itemStateChanged(ItemEvent e) {
              String categoryName=comboPurchaseCategory.getSelectedItem().toString(); 
+             purchaseDao.loadProduct(comboPurchaseCategory, categoryName);
                     
             }
         });
