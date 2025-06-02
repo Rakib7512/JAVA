@@ -27,7 +27,7 @@ public class PosViewA extends javax.swing.JFrame {
         supplierDao.showSupplierDetails(tableSupplier);
         purchaseDao.loadCategory(comboPurchaseCategory);//Category load korar jonno
         categoryDao.showAllCategorys(tableCategory);
-        supplierDao.loadSupplier(comboPurchaseCategory);
+        supplierDao.loadSupplier(comboPurchaseSupplierName);
         
      
         

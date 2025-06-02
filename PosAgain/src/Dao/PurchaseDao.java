@@ -47,7 +47,7 @@ public class PurchaseDao {
             comboCategoryBox.addItem(cat.getName());
         }
     }
-    public void savePurchase(String productName,float unitePrice, float quantity,float totalPrice,String category,String supplier){
+    public void savePurchase(String productName,float unitePrice, float quantity,float totalPrice,String category,String supplierName){
     
     sql="insert into purchase (productName,unitePrice,quantity,totalPrice,category,supplier,date) Values(?,?,?,?,?,?,now())";
         try {
@@ -57,7 +57,9 @@ public class PurchaseDao {
             ps.setFloat(3, quantity);
             ps.setFloat(4, totalPrice);
             ps.setString(5, category);
-            ps.setString(6, supplier);
+            ps.setString(6, supplierName);
+            
+            
             ps.executeUpdate();
             ps.close();
             du.getCon().close();
