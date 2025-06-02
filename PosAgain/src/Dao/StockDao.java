@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 
 public class StockDao {
@@ -37,5 +38,21 @@ public class StockDao {
             Logger.getLogger(StockDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return stockList;
+    }
+   public void saveProduct(String productName, float quantity,String category) {
+        sql = "insert into stock(productName,quantity,category)";
+        try {
+            ps = du.getCon().prepareStatement(sql);
+            ps.setString(1, productName);
+            ps.setFloat(2, quantity);
+            ps.setString(3, category);
+            ps.executeUpdate();
+            ps.close();
+            du.getCon().close();
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }

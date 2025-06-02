@@ -2,7 +2,9 @@ package View;
 
 import Dao.CategoryDao;
 import Dao.CustomerDao;
+import Dao.ProductDao;
 import Dao.PurchaseDao;
+import Dao.StockDao;
 import Dao.SupplierDao;
 import Util.DatabaseUtil;
 import java.awt.event.ItemEvent;
@@ -15,6 +17,9 @@ public class PosViewA extends javax.swing.JFrame {
     SupplierDao supplierDao = new SupplierDao();
     PurchaseDao purchaseDao = new PurchaseDao();
     CategoryDao categoryDao = new CategoryDao();
+    ProductDao productDao = new ProductDao();
+    StockDao stockDao =new StockDao();
+   
 
     /**
      * Creates new form PosViewA
@@ -28,10 +33,9 @@ public class PosViewA extends javax.swing.JFrame {
         purchaseDao.loadCategory(comboPurchaseCategory);//Category load korar jonno
         categoryDao.showAllCategorys(tableCategory);
         supplierDao.loadSupplier(comboPurchaseSupplierName);
-        
-     
-        
-   
+        productDao.loadCategoryToProductCombo(comboProductCategory);
+        productDao.showAllProduct(tblProduct);
+
         comboPurchaseCategory.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
@@ -71,6 +75,13 @@ public class PosViewA extends javax.swing.JFrame {
         txtCategoryID.setText("");
         txtCategoryName.setText("");
         btnCategorySave.setVisible(true);
+    }
+    public void resetProduct() {
+        txtProductProductName.setText("");
+        txtProductID.setText("");
+          btnProductSave.setVisible(true);
+   
+        
     }
 
     /**
@@ -270,6 +281,16 @@ public class PosViewA extends javax.swing.JFrame {
         });
 
         btnProduct.setText("Product");
+        btnProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductMouseClicked(evt);
+            }
+        });
+        btnProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductActionPerformed(evt);
+            }
+        });
 
         btnPurchase.setText("Purchase");
         btnPurchase.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -983,8 +1004,18 @@ public class PosViewA extends javax.swing.JFrame {
         jLabel27.setText("Product Name");
 
         btnProductSave.setText("Save");
+        btnProductSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductSaveMouseClicked(evt);
+            }
+        });
 
         btnProductReset.setText("Reset");
+        btnProductReset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductResetMouseClicked(evt);
+            }
+        });
 
         tblProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1298,29 +1329,54 @@ public class PosViewA extends javax.swing.JFrame {
 
     private void txtPurchaseQuantityFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPurchaseQuantityFocusLost
         // TODO add your handling code here:
-        float unitePrice=Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
-        float quantity=Float.parseFloat(txtPurchaseQuantity.getText().trim());
-          float totalPrice=unitePrice*quantity;
+        float unitePrice = Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
+        float quantity = Float.parseFloat(txtPurchaseQuantity.getText().trim());
+        float totalPrice = unitePrice * quantity;
         txtPurchaseTotalPrice.setText(String.valueOf(totalPrice));
     }//GEN-LAST:event_txtPurchaseQuantityFocusLost
 
     private void btnPurchaseConfirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPurchaseConfirmMouseClicked
         // TODO add your handling code here:
-        String category=comboPurchaseCategory.getSelectedItem().toString();
-        String productName=comboPurchaseProductName.getSelectedItem().toString();
-        String supplierName=comboPurchaseSupplierName.getSelectedItem().toString();
-         float unitePrice=Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
-        float quantity=Float.parseFloat(txtPurchaseQuantity.getText().trim());
-        float totalPrice=Float.parseFloat(txtPurchaseTotalPrice.getText().trim());
+        String category = comboPurchaseCategory.getSelectedItem().toString();
+        String productName = comboPurchaseProductName.getSelectedItem().toString();
+        String supplierName = comboPurchaseSupplierName.getSelectedItem().toString();
+        float unitePrice = Float.parseFloat(txtPurchaseUnitePrice.getText().trim());
+        float quantity = Float.parseFloat(txtPurchaseQuantity.getText().trim());
+        float totalPrice = Float.parseFloat(txtPurchaseTotalPrice.getText().trim());
         purchaseDao.savePurchase(productName, unitePrice, quantity, totalPrice, category, supplierName);
-        
+
     }//GEN-LAST:event_btnPurchaseConfirmMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
         // TODO add your handling code here:
         tabMain.setSelectedIndex(8);
-          
+
     }//GEN-LAST:event_btnReportMouseClicked
+
+    private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductMouseClicked
+
+    private void btnProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductActionPerformed
+        // TODO add your handling code here:
+        tabMain.setSelectedIndex(7);
+    }//GEN-LAST:event_btnProductActionPerformed
+
+    private void btnProductSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductSaveMouseClicked
+        // TODO add your handling code here:
+        String category = comboProductCategory.getSelectedItem().toString();
+        String productName = txtProductProductName.getText(); 
+        productDao.saveProduct(category, productName);
+          productDao.showAllProduct(tblProduct);
+            btnSupplierSave.setVisible(true);
+            stockDao.saveProduct(productName, 0, category);
+                  
+    }//GEN-LAST:event_btnProductSaveMouseClicked
+
+    private void btnProductResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductResetMouseClicked
+        // TODO add your handling code here:
+                btnSupplierSave.setVisible(true);
+    }//GEN-LAST:event_btnProductResetMouseClicked
 
     /**
      * @param args the command line arguments
