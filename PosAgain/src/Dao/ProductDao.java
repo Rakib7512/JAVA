@@ -23,8 +23,10 @@ public class ProductDao {
 
     public void loadCategoryToProductCombo(JComboBox<String> catList) {
         catList.removeAllItems();
-        List<Category> categories = new java.util.ArrayList<>();
+        List<Category> categories =new java.util.ArrayList<>();
         categories = categoryDao.getAllCategory();
+        
+        
         for (Category c : categories) {
             catList.addItem(c.getName());
 
@@ -33,7 +35,7 @@ public class ProductDao {
     }
 
     public void saveProduct(String category, String productName) {
-        sql = "insert into product(category,productName)";
+        sql = "insert into product(category,productName) Values(?,?)";
         try {
             ps = du.getCon().prepareStatement(sql);
             ps.setString(1, category);

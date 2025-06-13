@@ -7,8 +7,10 @@ import Dao.PurchaseDao;
 import Dao.StockDao;
 import Dao.SupplierDao;
 import Util.DatabaseUtil;
+import entity.Stock;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.List;
 
 public class PosViewA extends javax.swing.JFrame {
 
@@ -77,7 +79,6 @@ public class PosViewA extends javax.swing.JFrame {
         btnCategorySave.setVisible(true);
     }
     public void resetProduct() {
-        txtProductProductName.setText("");
         txtProductID.setText("");
           btnProductSave.setVisible(true);
    
@@ -1054,7 +1055,7 @@ public class PosViewA extends javax.swing.JFrame {
                                 .addComponent(txtProductProductName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addComponent(btnProductSave)
-                                .addGap(65, 65, 65)
+                                .addGap(233, 233, 233)
                                 .addComponent(btnProductReset))))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -1080,7 +1081,7 @@ public class PosViewA extends javax.swing.JFrame {
                     .addComponent(btnProductReset))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 167, Short.MAX_VALUE))
+                .addGap(0, 89, Short.MAX_VALUE))
         );
 
         tabProduct.addTab("tab1", jPanel15);
@@ -1344,7 +1345,27 @@ public class PosViewA extends javax.swing.JFrame {
         float quantity = Float.parseFloat(txtPurchaseQuantity.getText().trim());
         float totalPrice = Float.parseFloat(txtPurchaseTotalPrice.getText().trim());
         purchaseDao.savePurchase(productName, unitePrice, quantity, totalPrice, category, supplierName);
-
+        
+        
+        //Start Stock Update
+        List<Stock>sList=stockDao.getProductByCategory(category);
+        boolean status =false;
+     for(Stock stock: sList){
+     
+     if(productName.equals(stock.getProductName())){
+     
+     status =true;
+     break;
+        }
+     }
+     if(status){
+     stockDao.updateStockQuantityByProductName(productName, quantity);
+     
+     }
+    
+        
+    
+       
     }//GEN-LAST:event_btnPurchaseConfirmMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
@@ -1369,13 +1390,15 @@ public class PosViewA extends javax.swing.JFrame {
         productDao.saveProduct(category, productName);
           productDao.showAllProduct(tblProduct);
             btnSupplierSave.setVisible(true);
-            stockDao.saveProduct(productName, 0, category);
+            stockDao.saveStock(productName, 0, category);
+            resetProduct();
                   
     }//GEN-LAST:event_btnProductSaveMouseClicked
 
     private void btnProductResetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductResetMouseClicked
         // TODO add your handling code here:
                 btnSupplierSave.setVisible(true);
+                resetProduct();
     }//GEN-LAST:event_btnProductResetMouseClicked
 
     /**
