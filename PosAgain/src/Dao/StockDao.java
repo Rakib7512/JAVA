@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 public class StockDao {
@@ -72,4 +74,30 @@ public class StockDao {
    
    
    }
+   
+    public void getAllStock(JTable jt){
+         String[] colomName = {"Id", "Product Name", "Quantity","Category"};
+        DefaultTableModel tableModel = new DefaultTableModel(colomName, 0);
+        jt.setModel(tableModel);
+  
+    sql="select *from stock order by productName";
+        try {
+            ps=du.getCon().prepareStatement(sql);
+        
+            rs=ps.executeQuery();
+             while(rs.next()){
+          
+                    int id=rs.getInt("id");
+                   String productName= rs.getString("productName");
+                    float quantity=rs.getFloat("quantity");
+                  String category=  rs.getString("category");
+                  Object[] rowData={id,productName,quantity,category};
+                  tableModel.addRow(rowData);
+          
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StockDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+    }
 }

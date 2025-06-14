@@ -73,4 +73,8 @@ public class PurchaseDao {
     
     
     }
+    public void purchaseReportByDate(){
+    
+    
+    }
 }
