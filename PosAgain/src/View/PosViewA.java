@@ -221,9 +221,7 @@ public class PosViewA extends javax.swing.JFrame {
         jPanel21 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        JdateReportFrom = new com.toedter.calendar.JDateChooser();
         jLabel31 = new javax.swing.JLabel();
-        JdateReportTo = new com.toedter.calendar.JDateChooser();
         btnReportPurchase = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -1248,13 +1246,9 @@ public class PosViewA extends javax.swing.JFrame {
                     .addComponent(btnReportPurchase)
                     .addGroup(tabReportLayout.createSequentialGroup()
                         .addComponent(jLabel30)
-                        .addGap(60, 60, 60)
-                        .addComponent(JdateReportFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel31)
-                        .addGap(67, 67, 67)
-                        .addComponent(JdateReportTo, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(319, 319, 319)
+                        .addComponent(jLabel31)))
+                .addContainerGap(696, Short.MAX_VALUE))
         );
         tabReportLayout.setVerticalGroup(
             tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1263,12 +1257,10 @@ public class PosViewA extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(tabReportLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel30)
-                    .addComponent(JdateReportFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel31)
-                    .addComponent(JdateReportTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
+                    .addComponent(jLabel31))
+                .addGap(74, 74, 74)
                 .addComponent(btnReportPurchase)
-                .addGap(0, 340, Short.MAX_VALUE))
+                .addGap(0, 344, Short.MAX_VALUE))
         );
 
         tabMain.addTab("tab9", tabReport);
@@ -1614,8 +1606,6 @@ public class PosViewA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser JdateReportFrom;
-    private com.toedter.calendar.JDateChooser JdateReportTo;
     private javax.swing.JButton btnCategory;
     private javax.swing.JButton btnCategoryDelete;
     private javax.swing.JButton btnCategoryEdit;
